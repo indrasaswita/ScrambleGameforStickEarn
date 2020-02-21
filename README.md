@@ -1,7 +1,7 @@
 # ScrabbleDocumentation
 #### This is the game of construct the words. Where we play the brain to construct the letter for fit into the meaningful words.
 
-its host on <a href="">**this link**</a>
+its host on <a href="https://indrasaswita.com/scrambler/public/game/on" target="_blank">**this link**</a>
 
 > There are a board which contain 15x15 tiles, all 225 tiles have each value and own characters. There are several criteria and provision:
 1)	All tiles can be piled up with only one letter.
