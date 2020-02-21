@@ -1,0 +1,16 @@
+{
+  "name": "jakartabrosur",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "watchify app.js -o ../js/script.js -v",
+    "build": "uglifyjs ../js/script.js -cm > ../js/script.min.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.7.9",
+    "angular-resource": "^1.7.9",
+    "angular-route": "^1.7.9"
+  }
+}
