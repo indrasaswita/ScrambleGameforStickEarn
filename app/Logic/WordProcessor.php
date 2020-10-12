@@ -78,7 +78,7 @@ class WordProcessor{
 			}
 		}
 
-		$process = new Process(['python', app_path().'\\Http\\Controllers\\twl.py', $checkstr]);
+		$process = new Process(['python', app_path().'/Http/Controllers/twl.py', $checkstr]);
 		$process->run();
 
 		// executes after the command finishes
@@ -123,7 +123,7 @@ class WordProcessor{
 			}
 		}
 
-		$process = new Process(['python', app_path().'\\Http\\Controllers\\twl.py', $checkstr]);
+		$process = new Process(['python', app_path().'/Http/Controllers/twl.py', $checkstr]);
 		$process->run();
 
 		// executes after the command finishes

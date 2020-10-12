@@ -12,7 +12,7 @@ class WordAJAX extends Controller
 
 	public function checksingle($word){
 		header('Access-Control-Allow-Origin: *');
-		$process = new Process(['python', app_path().'\\Http\\Controllers\\twl.py', $word]);
+		$process = new Process(['python', app_path().'/Http/Controllers/twl.py', $word]);
 		$process->run();
 
 		// executes after the command finishes
