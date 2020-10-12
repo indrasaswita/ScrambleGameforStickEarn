@@ -20,10 +20,10 @@ require("./controller/_godhand.js")(app);
 require("./controller/_gameshow.js")(app);
 },{"./config/_config.js":2,"./controller/_gameshow.js":3,"./controller/_godhand.js":4,"./controller/init.js":5,"angular":11,"angular-resource":7,"angular-route":9}],2:[function(require,module,exports){
 module.exports = function(app){
-	$public_path = '/scrambler/public/'; 
-	// LOCALHOST PAKAI yang 'scrambler/public/'
+	$public_path = '/indra/scramble/public/'; 
+	// LOCALHOST PAKAI yang 'scramble/public/'
 	
-	$public_path = '/'; 
+	// $public_path = '/'; 
 	// UPLOAD PAKAI yg '/'
 
 	app.constant("BASE_URL", $public_path);

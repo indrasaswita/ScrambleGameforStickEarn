@@ -1,8 +1,8 @@
 module.exports = function(app){
-	$public_path = '/scrambler/public/'; 
-	// LOCALHOST PAKAI yang 'scrambler/public/'
+	$public_path = '/indra/scramble/public/'; 
+	// LOCALHOST PAKAI yang 'scramble/public/'
 	
-	$public_path = '/'; 
+	// $public_path = '/'; 
 	// UPLOAD PAKAI yg '/'
 
 	app.constant("BASE_URL", $public_path);

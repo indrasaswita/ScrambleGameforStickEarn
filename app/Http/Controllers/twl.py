@@ -11,4 +11,4 @@ for text in arr:
 		result = result+text
 
 
-print result
+print(result)

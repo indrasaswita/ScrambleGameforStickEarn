@@ -11,24 +11,37 @@ class WordAJAX extends Controller
 {
 
 	public function checksingle($word){
+		header('Access-Control-Allow-Origin: *');
 		$process = new Process(['python', app_path().'\\Http\\Controllers\\twl.py', $word]);
 		$process->run();
 
 		// executes after the command finishes
 		if (!$process->isSuccessful()) {
-		 throw new ProcessFailedException($process);
+			// return [0, "false"];
+			throw new ProcessFailedException($process);
 		}
 
 		$result = $process->getOutput();
 
-		if($result==1){
-			return [1, "true"];
+		if($result!=null){
+			return [
+				"api_status" => 1, 
+				"message" => "true",
+				"data" => [
+					"input" => $word
+				]
+			];
 		}else{
-			return [0, "false"];
+			return [
+				"api_status" => 0, 
+				"message" => "false",
+				"data" => null
+			];
 		}
 	}
 
 	public function checkmany(Request $request){
+		header('Access-Control-Allow-Origin: *');
 		$datas = $request->all();
 		if($datas != null){
 			if(array_key_exists('words', $datas)){
