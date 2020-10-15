@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get("wordcheck/{word}", "WordAJAX@checksingle");
 Route::post("wordcheck", "WordAJAX@checkmany");
+
+Route::post("getfriends", "TestController@getfriends");
