@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+
+define('prefix', "https://api-hangman.jpcc.my.id/image/");
 
 class TestController extends Controller
 {
@@ -11,7 +14,7 @@ class TestController extends Controller
 			"name" => "Sponge",
 			"fullname" => "Spongebob Squarepant",
 			"document" => [
-				"url" => ""
+				"url" => prefix."sponge.png"
 			],
 			"age" => "22",
 			"vip" => true,
@@ -20,7 +23,7 @@ class TestController extends Controller
 			"name" => "Squid",
 			"fullname" => "Squidward Tentacles",
 			"document" => [
-				"url" => ""
+				"url" => prefix."squidward.png"
 			],
 			"age" => "27",
 			"vip" => true,
@@ -29,7 +32,7 @@ class TestController extends Controller
 			"name" => "Patrick",
 			"fullname" => "Patrick Star",
 			"document" => [
-				"url" => ""
+				"url" => prefix."patrick.png"
 			],
 			"age" => "26",
 			"vip" => true,
@@ -38,37 +41,37 @@ class TestController extends Controller
 			"name" => "MM",
 			"fullname" => "Mermaid Man",
 			"document" => [
-				"url" => ""
+				"url" => prefix."mm.png"
 			],
 			"age" => "58",
-			"vip" => true,
+			"vip" => false,
 		],
 		[
 			"name" => "BB",
 			"fullname" => "Barnacle Boy",
 			"document" => [
-				"url" => ""
+				"url" => prefix."bb.png"
 			],
 			"age" => "56",
-			"vip" => true,
+			"vip" => false,
 		],
 		[
 			"name" => "Sandy",
 			"fullname" => "Sandy Cheeks",
 			"document" => [
-				"url" => ""
+				"url" => prefix."sandy.png"
 			],
 			"age" => "29",
-			"vip" => true,
+			"vip" => false,
 		],
 		[
 			"name" => "Mr. Krabs",
 			"fullname" => "Eugene Harold Krabs",
 			"document" => [
-				"url" => ""
+				"url" => prefix."krabs.png"
 			],
 			"age" => "48",
-			"vip" => true,
+			"vip" => false,
 		],
 	];
 
@@ -85,7 +88,7 @@ class TestController extends Controller
 
 		$friends = [];
 		foreach ($arr as $i => $ii) {
-			array_push($friends, $this->names[$i]);
+			array_push($friends, $this->names[$ii]);
 		}
 
 		return $friends;
@@ -114,5 +117,26 @@ class TestController extends Controller
 		}
 
 		return $indexes;
+	}
+
+	public function getUsers(Request $request){
+		$paginate = isset($request->paginate)?$request->paginate:null;
+		$page = isset($request->page)?$request->page:null;
+		$search = isset($request->search)?($request->search==""?null:$request->search):null;
+
+		if($paginate == null)
+			$paginate = 10;
+
+		if($page == null)
+			$page = 1;
+
+		if($search == null)
+			$users = User::paginate($paginate, ['*'], 'page', $page);
+		else{
+			$users = User::where('fullname', 'LIKE', "%".$search."%")
+				->paginate($paginate, ['*'], 'page', $page);
+		}
+
+		return $users;
 	}
 }
